@@ -1,0 +1,9 @@
+@mixin textover($num) {
+  .txtover3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+  }
+}

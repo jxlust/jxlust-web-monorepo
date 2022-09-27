@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>get请求</h1>
+    <form action="http://localhost:3000/login" method="get">
+      用户名：<input type="text" name="username" /><br />
+      密码：<input type="password" name="password" /><br />
+      <input type="submit" value="提交" />
+    </form>
+    <hr />
+    <h1>post请求</h1>
+    <form action="http://localhost:3000/login" method="post">
+      用户名：<input type="text" name="username" /><br />
+      密码：<input type="password" name="password" /><br />
+      <input type="submit" value="提交" />
+    </form>
+
+    <button id="postBtn">post 请求</button>
+
+    <script>
+      const btnEl = document.getElementById('postBtn');
+      let pfun = window.parent.SFNativeApp;
+      console.log(11111, pfun);
+      btnEl.innerText = pfun;
+      const postData = () => {
+        // let xmlrequest = new XMLHttpRequest();
+        let params = {
+          username: 'admin',
+          password: '123',
+        };
+        fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(params), // 这里是请求对象
+        })
+          .then((response) => {
+            return response.text(); // res.text()是一个Promise对象
+          })
+          .then((response) => {
+            console.log('data', response); //返回的数据
+          });
+      };
+      btnEl.addEventListener('click', () => {
+        postData();
+      });
+    </script>
+  </body>
+</html>
