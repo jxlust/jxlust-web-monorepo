@@ -1,5 +1,13 @@
 ## jxlust create web template
 
+使用
+
+```shell
+create-jweb ...
+```
+
+## create 依赖
+
 1. 依赖的命令处理工具
 
 ```json
