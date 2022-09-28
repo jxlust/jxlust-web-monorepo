@@ -12,7 +12,7 @@
     "dev-server",
     "build-tool"
   ],
-  "author": "jxlust", 
+  "author": "jxlust",
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
@@ -23,7 +23,7 @@
     "lint": "eslint --cache .",
     "typecheck": "tsc -p scripts --noEmit && tsc -p playground --noEmit",
     "test": "run-s test-unit test-serve test-build",
-    "test-docs": "pnpm run docs-build",      
+    "test-docs": "pnpm run docs-build",
     "build": "pnpm -r --filter='./packages/*' run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
     "release": "tsx scripts/release.ts",
@@ -95,18 +95,13 @@
     "packages/*/{src,types}/**/*.ts": [
       "eslint --cache --fix"
     ],
-    "packages/**/*.d.ts": [
-      "eslint --cache --fix"
-    ],
     "playground/**/__tests__/**/*.ts": [
       "eslint --cache --fix"
     ]
   },
   "packageManager": "pnpm@7.12.2",
   "pnpm": {
-    "overrides": {
-       
-    },
+    "overrides": {},
     "packageExtensions": {
       "postcss-load-config": {
         "peerDependencies": {
