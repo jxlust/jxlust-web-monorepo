@@ -16,7 +16,6 @@ import {
   reset,
   yellow
 } from 'kolorist'
-
 // Avoids autoconversion to number of the project name by defining that the args
 // non associated with an option ( _ ) needs to be parsed as a string. See #4606
 const argv = minimist<{
@@ -24,7 +23,6 @@ const argv = minimist<{
   template?: string
 }>(process.argv.slice(2), { string: ['_'] })
 const cwd = process.cwd()
-
 type ColorFunc = (str: string | number) => string
 type Framework = {
   name: string
@@ -102,7 +100,7 @@ const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore'
 }
 
-const defaultTargetDir = 'vite-project'
+const defaultTargetDir = 'jweb-project'
 
 async function init() {
   const argTargetDir = formatTargetDir(argv._[0])
@@ -213,7 +211,6 @@ async function init() {
 
   // determine template
   const template: string = variant || framework || argTemplate
-
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
   const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
   const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.')
