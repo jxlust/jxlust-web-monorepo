@@ -1,0 +1,47 @@
+{
+  "name": "jxlust-create-web",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "web",
+    "template",
+    "cli",
+    "web cli"
+  ],
+  "author": "jxlust",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "create-jweb": "index.js",
+    "cwb": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template-*",
+    "dist"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxxx",
+    "directory": "packages/create-web"
+  },
+  "bugs": {
+    "url": "https://github.com/xxxx/issues"
+  },
+  "homepage": "https://github.com/xxxx/tree/main/packages/create-web#readme",
+  "dependencies": {
+    "cross-spawn": "^7.0.3",
+    "kolorist": "^1.6.0",
+    "minimist": "^1.2.6",
+    "prompts": "^2.4.2"
+  }
+}
