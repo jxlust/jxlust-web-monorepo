@@ -34,6 +34,9 @@
     "url": "git+https://github.com/xxxx",
     "directory": "packages/create-web"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "bugs": {
     "url": "https://github.com/xxxx/issues"
   },
