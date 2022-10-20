@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>umd 浏览器全局使用组件</title>
+    <link rel="stylesheet" href="../lib/style.css" />
+    <style>
+      .test {
+        display: block;
+        min-height: 100px;
+        width: 100%;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>利用vue的虚拟dom和渲染方法进行手动渲染和插入节点</h1>
+    <div class="test">
+      <span>umd渲染app1:</span>
+      <div id="app"></div>
+    </div>
+
+    <div class="test">
+      <span>umd渲染app2:</span>
+      <div id="app2"></div>
+    </div>
+
+    <div class="test">
+      <span>my npm assets img:</span>
+      <img src="https://unpkg.com/@jxlust/assets@0.0.5/logo.png" alt="" />
+    </div>
+
+    <script>
+      function asyncAppendScript(url) {
+        return new Promise((resolve, reject) => {
+          const scriptEl = document.createElement('script');
+          scriptEl.setAttribute('src', url);
+          document.head.appendChild(scriptEl);
+          scriptEl.onload = () => {
+            resolve('ok');
+          };
+          scriptEl.onerror = () => {
+            reject(new Error(`${url} load error`));
+          };
+        });
+      }
+      /**
+       * 并发
+       **/
+      const concurrencyRenderApp = async () => {
+        let promises = [
+          'https://unpkg.com/vue@3.2.41/dist/vue.global.js',
+          '../lib/index.umd.js'
+        ].map((url) => asyncAppendScript(url));
+        let results = [];
+        for (let p of promises) {
+          try {
+            let ret = await p;
+            results.push(ret);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        if (results.length === promises.length) {
+          const MyButton = window.JxlpUi.JButton;
+          const app = Vue.createApp(MyButton);
+          app.mount('#app');
+        }
+      };
+
+      const syncRenderApp = async (fn) => {
+        //先加载完成vue 在加载组件umd模块
+        let urls = [
+          'https://unpkg.com/vue@3.2.41/dist/vue.global.js',
+          '../lib/index.umd.js'
+        ];
+        let results = [];
+
+        for (let url of urls) {
+          try {
+            let ret = await asyncAppendScript(url);
+            results.push(ret);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+
+        if (results.length === urls.length) {
+          const MyButton = window.JxlpUi.JButton;
+          console.log('MyButton:', MyButton);
+          //h 代替createVNode
+          //https://www.javascriptc.com/vue3js/guide/render-function.html#%E8%99%9A%E6%8B%9F-dom-%E6%A0%91
+          const vNode = window.Vue.h(
+            MyButton,
+            {
+              text: '1111',
+              'onHeart-click': (e) => {
+                console.log('way1 event click', e);
+                fn(e);
+              }
+            },
+            null
+          );
+          console.log('vNode:', vNode);
+          //方式1
+          Vue.render(vNode, document.getElementById('app'));
+          //方式2
+          const app = Vue.createApp(MyButton, {
+            text: '2222',
+            onHeartClick: (e) => {
+              console.log('way2 evnet click:', e);
+            }
+          });
+          app.mount('#app2');
+        }
+      };
+      const clickFn = (e) => {
+        console.log('heart click', e);
+      };
+      syncRenderApp(clickFn);
+    </script>
+
+    <script>
+      let appDom = document.getElementById('app');
+
+      setTimeout(() => {
+        appDom.querySelector('.jheart').addEventListener('heart-click', (e) => {
+          console.log(2, e);
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>
