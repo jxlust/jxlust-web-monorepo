@@ -1,6 +1,6 @@
 {
   "name": "jxltools",
-  "version": "1.0.9",
+  "version": "1.0.25",
   "description": "我是jxlust的前端工具包",
   "main": "lib/index.esm.js",
   "module": "lib/index.cjs.js",
@@ -10,10 +10,7 @@
     "build": "rollup -c rollup.config.js && npm run copy",
     "publish": "node scripts/publish.js",
     "copy": "cp package.json README.md lib",
-    "test": "ts-node test/test.ts",
-    "lint": "eslint 'src/**/*.{js,ts}'",
-    "prettier": "prettier --write --loglevel log 'src/**/*.{js,json,tsx,css,less,scss,vue,html,md,ts}'",
-    "prepare:pre": "cd .. && husky install pluginTools/.husky"
+    "test": "ts-node test/test.ts"
   },
   "repository": {
     "type": "git",

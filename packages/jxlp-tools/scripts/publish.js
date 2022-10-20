@@ -39,6 +39,8 @@ function publish() {
     '"name": "@jxlust/jxltools"',
     targetFile
   )
+  // /"scripts":\{.*\"\}/
+  shelljs.sed('-i', /"publish": "node scripts\/publish.js",/, '', targetFile)
   //修改版本号
   shelljs.sed(
     '-i',
@@ -53,10 +55,9 @@ function publish() {
     `"version": "${newVersion}"`,
     originFile
   ) // 修改版本号
-
-  shelljs.cd(targetDir)
+  // shelljs.cd(targetDir)
   // console.log('current dir:', process.cwd())
-  shelljs.exec('npm publish --access public') // 发布
+  // shelljs.exec('npm publish --access public') // 发布
 }
 //@jxlust/jxltools 私密包默认要收费 ,可以添加 npm publish --access public 发布
 
