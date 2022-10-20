@@ -90,7 +90,9 @@ const CONTENT_PADDING = 14
 /**
  * 绘制图片
  */
-export const canvasMeetingInviteImage: any = async (options: InviteOptions) => {
+export const canvasMeetingInviteImage = async (
+  options: InviteOptions
+): Promise<string> => {
   const {
     userName,
     inviteTips = '邀请你一起开会a',

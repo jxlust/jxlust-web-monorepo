@@ -2,7 +2,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import json from 'rollup-plugin-json'
-import eslint from '@rollup/plugin-eslint'
+// import eslint from '@rollup/plugin-eslint'
 import { babel } from '@rollup/plugin-babel'
 // import { terser } from "rollup-plugin-terser"; //压缩代码
 // import postcss from 'rollup-plugin-postcss';//打包css
@@ -48,7 +48,7 @@ export default {
     }), // 查找和打包node_modules中的第三方模块
     commonjs(), // 将 CommonJS 转换成 ES2015 模块供 Rollup 处理
     typescript(), // 解析TypeScript
-    eslint(),
+    // eslint(),
     babel({
       exclude: 'node_modules/**',
       extensions
