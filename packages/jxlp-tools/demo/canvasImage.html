@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+
   <body>
-    <script src="../../dist/index.js"></script>
+    <script src="../../lib/index.umd.js"></script>
 
     <canvas id="my-canvas"> </canvas>
 
@@ -43,11 +44,11 @@
       meetingRoom: '总部-创智天地大厦30楼1号会议室', //必填
       scanTips: '手机扫描二维码入会', //不填为默认
       fromTips: '来自丰声会议邀请', //不填为默认
-      avatarUrl: '../img/avatar.png', //必填,头像url
-      qrCodeUrl: '../img/qr-code.png', //必填,二维码url
+      avatarUrl: 'http://127.0.0.1:5500/assets/img/avatar.png', //必填,头像url
+      qrCodeUrl: 'http://127.0.0.1:5500/assets/img/qr-code.png', //必填,二维码url
       bgImgUrl: 'http://127.0.0.1:5500/assets/img/post-bg.png' //必填背景图片url
     }
-    window.JWebTools.canvasMeetingInviteImage(options).then((data) => {
+    window.JxlPTools.canvasMeetingInviteImage(options).then((data) => {
       let imgDom = document.getElementById('my-img')
       imgDom.src = data
     })

@@ -8,7 +8,7 @@ import { babel } from '@rollup/plugin-babel'
 // import postcss from 'rollup-plugin-postcss';//打包css
 
 import pkg from './package.json'
-const formatName = 'mytools'
+const formatName = 'JxlPTools'
 const extensions = ['.js', '.ts']
 
 export default {
@@ -24,11 +24,11 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'esm'
     },
     {
       file: pkg.module,
-      format: 'esm'
+      format: 'cjs'
     },
     {
       file: pkg.browser,
