@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../dist/index.js"></script>
+
+    <canvas id="my-canvas"> </canvas>
+
+    <img id="my-img" src="" alt="" />
+  </body>
+
+  <script>
+    //   const userName = '小李';
+    //   const inviteTips = '邀请你一起开会';
+    //   let title = '说了句法，sad减肥啦就是了发掘';
+    //   const titleTips = title.length > 17 ? title.slice(0, 16) + '...' : title;
+    //   const timeLabel = '时间';
+    //   const timeDate = '9月22日(星期四)';
+    //   const timeRange = '10:00-12:00';
+    //   const addressLabel = '地点';
+    //   let meetingRoom = '总部-创智天地大厦30楼1号会议室';
+    //   let scanTips = '手机扫描二维码入会';
+    //   let fromTips = '来自丰声会议邀请';
+    //   const imgUrlLists = [
+    //     'http://127.0.0.1:5500/assets/img/post-bg.png',
+    //     'http://127.0.0.1:5500/assets/img/qr-code.png',
+    //     'http://127.0.0.1:5500/assets/img/avatar.png',
+    //     // 'http://srs.sf-express.com/fileimage/img_d561a10cba7395f32be97cca806949dd.jpg',
+    //   ];
+    let options = {
+      userName: 'x小李', //必填
+      inviteTips: '邀请你一起开会', //不填为默认
+      title: '收到发放三，打发撒是', //必填
+      timeLabel: '时间', //不填为默认
+      timeDate: '9月22日(星期四)', //必填
+      timeRange: '10:00-12:00', //必填
+      addressLabel: '地点', //不填为默认
+      meetingRoom: '总部-创智天地大厦30楼1号会议室', //必填
+      scanTips: '手机扫描二维码入会', //不填为默认
+      fromTips: '来自丰声会议邀请', //不填为默认
+      avatarUrl: '../img/avatar.png', //必填,头像url
+      qrCodeUrl: '../img/qr-code.png', //必填,二维码url
+      bgImgUrl: 'http://127.0.0.1:5500/assets/img/post-bg.png' //必填背景图片url
+    }
+    window.JWebTools.canvasMeetingInviteImage(options).then((data) => {
+      let imgDom = document.getElementById('my-img')
+      imgDom.src = data
+    })
+  </script>
+</html>

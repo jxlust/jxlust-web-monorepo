@@ -1,0 +1,48 @@
+{
+  "name": "jxltools",
+  "version": "1.0.0",
+  "description": "我是jxlust的前端工具包",
+  "main": "lib/bundle.umd.js",
+  "jsnext:main": "lib/bundle.esm.js",
+  "module": "lib/bundle.esm.js",
+  "browser": "dist/index.js",
+  "scripts": {
+    "dev": "npx rollup -w -m -c rollup.config.dev.js",
+    "build": "rollup -c rollup.config.js && npm run copy",
+    "publish": "node scripts/publish.js",
+    "copy": "cp package.json README.md dist",
+    "test": "ts-node test/test.ts",
+    "lint": "eslint 'src/**/*.{js,ts}'",
+    "prettier": "prettier --write --loglevel log 'src/**/*.{js,json,tsx,css,less,scss,vue,html,md,ts}'",
+    "prepare": "husky install",
+    "prepare:pre": "cd .. && husky install pluginTools/.husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jxlust/jxltools.git"
+  },
+  "keywords": [
+    "toolkit",
+    "rollup",
+    "typescript"
+  ],
+  "author": "jxlust",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-typescript": "^7.17.12",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-eslint": "^8.0.2",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "commander": "^9.2.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "shelljs": "^0.8.5",
+    "vite-plugin-dts": "^1.6.6"
+  }
+}
