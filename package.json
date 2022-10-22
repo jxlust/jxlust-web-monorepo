@@ -31,6 +31,7 @@
     "ci-docs": "run-s build docs-build"
   },
   "devDependencies": {
+    "jxltools": "workspace:*",
     "@babel/types": "^7.19.0",
     "@microsoft/api-extractor": "^7.31.2",
     "@rollup/plugin-typescript": "^8.5.0",
