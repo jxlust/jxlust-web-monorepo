@@ -6,5 +6,6 @@ module.exports = {
   //print coverage
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  coverageProvider: 'v8'
+  coverageProvider: 'v8',
+  roots: ['<rootDir>/tests/']
 }
